@@ -11,12 +11,14 @@ name: Java CI with Maven
 on:
   push:
     branches: [ "*" ]
+    paths: ["**.java", ".github/workflows/build.yml", "pom.xml"]
   pull_request:
     branches: [ "main" ]
+    
+  workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
