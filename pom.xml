@@ -42,4 +42,11 @@
             <url>https://maven.pkg.github.com/cometbid-project/test-gitaction-workflow</url>
         </repository>
     </distributionManagement>
+    
+    <scm>
+        <connection>scm:git:git://github.com/cometbid-project/kc-iam-connector.git</connection>
+        <developerConnection>scm:git:ssh://github.com/cometbid-project/kc-iam-connector.git</developerConnection>
+        <url>https://github.com/cometbid-project/kc-iam-connector/tree/main</url>
+    </scm>
+    
 </project>
