@@ -8,7 +8,7 @@
     
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Test GitHub Action workflow</description>
-    <url>https://cometbid.org/kc-iam-connector</url>
+    <url>https://cometbid.org/test-gitaction-workflow</url>
     
     <licenses>
         <license>
@@ -48,9 +48,9 @@
     </distributionManagement>
     
     <scm>
-        <connection>scm:git:git://github.com/cometbid-project/kc-iam-connector.git</connection>
-        <developerConnection>scm:git:ssh://github.com/cometbid-project/kc-iam-connector.git</developerConnection>
-        <url>https://github.com/cometbid-project/kc-iam-connector/tree/main</url>
+        <connection>scm:git:git://github.com/cometbid-project/test-gitaction-workflow.git</connection>
+        <developerConnection>scm:git:ssh://github.com/cometbid-project/test-gitaction-workflow.git</developerConnection>
+        <url>https://github.com/cometbid-project/test-gitaction-workflow/tree/main</url>
     </scm>
     <issueManagement>
         <system>github</system>
@@ -130,7 +130,7 @@
                 <repository>
                     <id>github</id>
                     <name>GitHub Cometbid-SFI Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/cometbid-project/kc-iam-connector</url>
+                    <url>https://maven.pkg.github.com/cometbid-project/test-gitaction-workflow</url>
                 </repository>
             </distributionManagement>
         </profile>
