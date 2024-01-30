@@ -10,8 +10,6 @@ jobs:
   build_test:
     name: Build and Test
     runs-on: ubuntu-latest
-    env:
-      artifact_name: test-gitaction-workflow
       
     permissions:
       contents: read
@@ -37,7 +35,8 @@ jobs:
     permissions:
       packages: write       
     env:
-        GITHUB_TOKEN: ${{ github.token }}  
+        GITHUB_TOKEN: ${{ github.token }}
+        artifact_name: test-gitaction-workflow
     needs: build_test
     steps:
     - uses: actions/checkout@v4
