@@ -18,6 +18,16 @@
         </license>
     </licenses>
     
+    <developers>
+        <developer>
+            <name>Adebowale Samuel</name>
+            <email>samuel.adebowale@cometbid.org</email>
+            <url>https://www.cometbid.org/</url>
+            <organization>The Cometbid Software Foundation Inc.</organization>
+            <organizationUrl>https://github.com/cometbid-project</organizationUrl>
+        </developer>
+    </developers>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
