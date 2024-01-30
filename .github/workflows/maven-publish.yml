@@ -6,10 +6,9 @@ name: Maven Package
 on:
   release:
     types: [created]
-
 jobs:
   build_test:
-    name: Build and Publish
+    name: Build and Test
     runs-on: ubuntu-latest
     env:
       artifact_name: test-gitaction-workflow
@@ -39,15 +38,13 @@ jobs:
       
     - name: Update package version
       run: mvn versions:set -DnewVersion=${{ steps.get_version.outputs.VERSION }}
-      
-    - name: Publish to GitHub Packages Apache Maven
-      #run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      run: mvn deploy -PgithubDeploy
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
         
   publish-job:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write       
+    env:
+        GITHUB_TOKEN: ${{ github.token }}  
     needs: build_test
     steps:
     - uses: actions/checkout@v4
@@ -55,6 +52,11 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+        
+    - name: Publish to GitHub Packages Apache Maven
+      #run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      run: mvn deploy -PgithubDeploy
+      
     - run: mvn --batch-mode --update-snapshots verify
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v3
