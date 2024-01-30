@@ -52,5 +52,9 @@
         <developerConnection>scm:git:ssh://github.com/cometbid-project/kc-iam-connector.git</developerConnection>
         <url>https://github.com/cometbid-project/kc-iam-connector/tree/main</url>
     </scm>
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/cometbid-project/test-gitaction-workflow/issues</url>
+    </issueManagement>
     
 </project>
