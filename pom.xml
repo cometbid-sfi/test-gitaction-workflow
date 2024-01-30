@@ -27,6 +27,10 @@
             <organizationUrl>https://github.com/cometbid-project</organizationUrl>
         </developer>
     </developers>
+    <organization>
+        <name>Cometbid.Org</name>
+        <url>https://www.cometbid.org/</url>
+    </organization>	
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
