@@ -20,10 +20,6 @@ jobs:
     steps:
     - name: Checkout source code
       uses: actions/checkout@v4
-
-    - name: Get the release version
-      id: get_version
-      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_OUTPUT
       
     - name: Set up JDK 17 for deploy to github packages
       uses: actions/setup-java@v4
@@ -35,9 +31,6 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-      
-    - name: Update package version
-      run: mvn versions:set -DnewVersion=${{ steps.get_version.outputs.VERSION }}
         
   publish-job:
     runs-on: ubuntu-latest
@@ -53,6 +46,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         
+    - name: Get the release version
+      id: get_version
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_OUTPUT
+      
+    - name: Update package version
+      run: mvn versions:set -DnewVersion=${{ steps.get_version.outputs.VERSION }}
+      
     - name: Publish to GitHub Packages Apache Maven
       #run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       run: mvn deploy -PgithubDeploy
