@@ -13,7 +13,7 @@ on:
     branches: [ "*" ]
     paths: ["**.java", ".github/workflows/build.yml", "pom.xml"]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "*" ]
     
   workflow_dispatch:
 
