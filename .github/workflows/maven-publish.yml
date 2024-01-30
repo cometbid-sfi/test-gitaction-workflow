@@ -44,3 +44,13 @@ jobs:
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        
+    - name: Upload jar files to release as release assets
+      run: |
+        TAG=${GITHUB_REF/refs\/tags\//}
+        gh release upload ${TAG} target/${{ env.artifact_name }}-${{ steps.get_version.outputs.VERSION }}.jar
+        gh release upload ${TAG} target/${{ env.artifact_name }}-${{ steps.get_version.outputs.VERSION }}-sources.jar
+        gh release upload ${TAG} target/${{ env.artifact_name }}-${{ steps.get_version.outputs.VERSION }}-javadoc.jar
+        gh release upload ${TAG} target/${{ env.artifact_name }}-${{ steps.get_version.outputs.VERSION }}-jar-with-dependencies.jar
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
