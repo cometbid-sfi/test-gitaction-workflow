@@ -63,14 +63,14 @@
             <id>ossrhDeploy</id>
             <distributionManagement>
                 <repository>
-                    <id>oss.sonatype.org</id>
-                    <name>Central Repository OSS-SONATYPE</name>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <id>ossrh</id>
+                    <name>Central Repository OSS-SONATYPE Releases</name>
+                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                 </repository>
                 <snapshotRepository>
-                    <id>oss.sonatype.org</id>
-                    <name>Central Repository OSS-SONATYPE</name>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                    <id>ossrh</id>
+                    <name>Central Repository OSS-SONATYPE Snapshots</name>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
                 </snapshotRepository>
             </distributionManagement>
             <build>
@@ -82,7 +82,7 @@
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
                     </plugin>
@@ -91,8 +91,14 @@
                         <artifactId>maven-release-plugin</artifactId>
                         <version>3.0.1</version>
                         <configuration>
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <useReleaseProfile>false</useReleaseProfile>
+                            <releaseProfiles>release</releaseProfiles>
+                            <goals>deploy</goals>
+                            <!--
                             <tagNameFormat>@{project.version}</tagNameFormat>
-                        </configuration>
+                            -->
+                        </configuration>                    
                         <executions>
                             <execution>
                                 <id>default</id>
