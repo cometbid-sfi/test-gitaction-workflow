@@ -30,16 +30,16 @@ jobs:
           distribution: "adopt"
           java-version: "17"
           server-id: ossrh
-          server-username: ${{ secrets.OSS_SONATYPE_USERNAME }}
-          server-password: ${{ secrets.OSS_SONATYPE_PASSWORD }}
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
-          gpg-passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
       - name: Update package version
         run: mvn versions:set -DnewVersion=${{ steps.get_version.outputs.VERSION }}
 
       - name: Publish to Apache Maven Central
-        run: mvn --batch-mode clean deploy -PossrhDeploy -DskipTests=true
+        run: mvn --batch-mode clean deploy -P ossrhDeploy -DskipTests=true
         env:
           MAVEN_USERNAME: ${{ secrets.OSS_SONATYPE_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSS_SONATYPE_PASSWORD }}
